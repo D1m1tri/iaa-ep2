@@ -19,16 +19,17 @@ int particao(int array[], int min, int max){
 }
 
 void QuickSort(int array[], int min, int max){
+	max--;
 	if(min < max){
 		int pivot = particao(array, min, max);
-		QuickSort(array, min, pivot-1);
-		QuickSort(array, pivot+1, max);
+		QuickSort(array, min, pivot);
+		QuickSort(array, pivot+1, max+1);
 	}
 }
 
 void BubbleSort(int array[], int n){
 	for (int i = 1; i < n; i++){
-		for (int j = 0; j < n; j++){
+		for (int j = 0; j < n - 1; j++){
 			if (array[j] < array[j+1]){
 				swap(&array[j], &array[j+1]);
 			}
