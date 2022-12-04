@@ -28,7 +28,7 @@ void QuickSort(int array[], int min, int max){
 
 void BubbleSort(int array[], int n){
 	for (int i = 1; i < n; i++){
-		for (int j = 0; j < n-i; j++){
+		for (int j = 0; j < n; j++){
 			if (array[j] < array[j+1]){
 				swap(&array[j], &array[j+1]);
 			}

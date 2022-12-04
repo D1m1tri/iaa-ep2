@@ -3,14 +3,15 @@
 #include "functions.h"
 
 int main(){
+	srand(time(NULL));
 	int n;
 	scanf("%i", &n);
 	int maxRandom = n;
 	int array1[n], array2[n];
 	for (int i=0; i < n; i++){
-		scanf("%i", &array1[i]);
+		array1[i] = rand()%1000000;
 		array1[i] = array2[i];
-		printf("process %i complete\n", i+1);
+		//printf("process %i complete\n", i+1);
 	}
 	float time;
 	printf("\n --- Starting QuickSort... ---\n");
