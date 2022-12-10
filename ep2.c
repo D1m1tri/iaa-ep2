@@ -4,29 +4,32 @@
 
 int main(){
 	srand(time(NULL));
-	int n;
+	int min, total, passo;
 	float time;
-	scanf("%i", &n);
-	int maxRandom = n;
-	int array1[n], array2[n];
-	printf(" - Creating 2 arrays with %i interger(s) each...\n", n);
-	time = Clock(1);
-	for (int i=0; i < n; i++){
-		array1[i] = rand()%1000000;
-		//scanf("%i", &array1[i]);
-		array2[i] = array1[i];
-		//printf("process %i complete\n", i+1);
+	printf("menor número testado: ");
+	scanf("%i", &min);
+	printf("total de números: ");
+	scanf("%i", &total);
+	printf("passo: ");
+	scanf("%i", &passo);
+	printf("\n\n");
+	float QuickSortTime[total];
+	float BubbleSortTime[total];
+	for(int d=0; d<total;d++){
+		int n = min + d*passo;
+		int maxRandom = n;
+		int array1[n], array2[n];
+		for (int i=0; i < n; i++){
+			array1[i] = rand()%1000000;
+			array2[i] = array1[i];
+		}
+		time = Clock(1);
+		QuickSort(array1, 0, n);
+		QuickSortTime[d] = Clock(0);
+		time = Clock(1);
+		BubbleSort(array2, n);
+		BubbleSortTime[d] = Clock(0);
+		printf("%i - 		%.3f		%.3f\n", n,QuickSortTime[d],BubbleSortTime[d]);
 	}
-	time = Clock(0);
-	printf(" - Process complete: Took %2fms.");
-	printf("\n --- Starting QuickSort... ---\n");
-	time = Clock(1);
-	QuickSort(array1, 0, n);
-	float QuickSortTime = Clock(0);
-	printf("\n --- Starting Bubblesort... ---\n");
-	time = Clock(1);
-	BubbleSort(array2, n);
-	float BubbleSortTime = Clock(0);
-	printf("\n\n - QuickSort took %.2fms\n", QuickSortTime);
-	printf(" - BubbleSort took %.2fms\n", BubbleSortTime);
+	printf("\n\n");
 }
